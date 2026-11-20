@@ -1,11 +1,14 @@
 #include "BusyList.h"
 
-// Earliest finish time first, ties by smaller RID   
+// Earliest finish time first, ties by smaller RID
 static bool busyOrder(Technician* const& a, Technician* const& b)
 {
-    if (a->currentTicket->ft != b->currentTicket->ft)
-        return a->currentTicket->ft < b->currentTicket->ft;
-    return a->currentTicket->rid < b->currentTicket->rid;
+    Ticket* ta = a->getCurrentTicket();
+    Ticket* tb = b->getCurrentTicket();
+
+    if (ta->getFT() != tb->getFT())
+        return ta->getFT() < tb->getFT();
+    return ta->getRID() < tb->getRID();
 }
 
 BusyList::BusyList() : LinkedPriorityQueue<Technician*>(busyOrder)
@@ -19,8 +22,9 @@ Technician* BusyList::removeByTicketID(int rid)
 
     while (cur != nullptr)
     {
-        if (cur->data->currentTicket != nullptr &&
-            cur->data->currentTicket->rid == rid)
+        Ticket* t = cur->data->getCurrentTicket();
+
+        if (t != nullptr && t->getRID() == rid)
         {
             Technician* tech = cur->data;
 
