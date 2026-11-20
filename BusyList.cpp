@@ -1,6 +1,6 @@
 #include "BusyList.h"
 
-// Earliest finish time first, ties by smaller RID  
+// Earliest finish time first, ties by smaller RID   
 static bool busyOrder(Technician* const& a, Technician* const& b)
 {
     if (a->currentTicket->ft != b->currentTicket->ft)
