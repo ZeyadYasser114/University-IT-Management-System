@@ -19,22 +19,22 @@ Technician* BusyList::removeByTicketID(int rid)
 
     while (cur != nullptr)
     {
-        if (cur->item->currentTicket != nullptr &&
-            cur->item->currentTicket->rid == rid)
+        if (cur->data->currentTicket != nullptr &&
+            cur->data->currentTicket->rid == rid)
         {
-            Technician* tech = cur->item;
+            Technician* tech = cur->data;
 
             if (prev == nullptr)
-                head = cur->next;        // head
+                head = cur->next;        // removing the head
             else
-                prev->next = cur->next;  // middle or last
+                prev->next = cur->next;  // middle or last node
 
-            delete cur;                  // node only, not the technician
+            delete cur;                  // delete the node only, not the technician
             count--;
             return tech;
         }
         prev = cur;
         cur = cur->next;
     }
-    return nullptr;
+    return nullptr;                      // empty list or not found
 }
