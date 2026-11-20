@@ -1,7 +1,8 @@
+#pragma once
 #include "Node.h"
 template <typename T>
 class LinkedQueue {
-private:
+protected:
     Node<T>* front = nullptr;
     Node<T>* rear = nullptr;
     int count = 0;
@@ -53,5 +54,19 @@ public:
 
     ~LinkedQueue() {
         clear();
+    }
+    void print() const {
+        if (isEmpty()) {
+            cout << "none";
+            return;
+        }
+        Node<T>* curr = front;
+        while (curr != nullptr) {
+            cout << curr->data;
+            if (curr->next != nullptr) {
+                cout << " ";
+            }
+            curr = curr->next;
+        }
     }
 };
