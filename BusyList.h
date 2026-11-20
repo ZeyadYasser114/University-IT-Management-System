@@ -1,7 +1,7 @@
-#pr#pragma once
-#include "LinkedPriorityQueue.h"      // From Zeyad
-#include "Technician.h"              // From Youssef Haitham 
-#include "Ticket.h"                 // From Youssef Haitham 
+#pragma once
+#include "LinkedPriorityQueue.h"
+#include "Technician.h"
+#include "Ticket.h"
 
 class BusyList : public LinkedPriorityQueue<Technician*>
 {
