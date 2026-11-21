@@ -26,3 +26,15 @@ void Technician::releaseTicket()
         currentTicket = nullptr;
     }
 }
+
+ostream& operator<<(ostream& out, const Technician& t)
+{
+    out << t.getTID();
+    return out;
+}
+
+ostream& operator<<(ostream& out, const Technician* t)
+{
+    out << t->getTID();
+    return out;
+}
