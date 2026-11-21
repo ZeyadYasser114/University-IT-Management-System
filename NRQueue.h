@@ -1,13 +1,13 @@
+#pragma once
 #include "LinkedQueue.h"
-
-class Ticket;
+#include "Ticket.h"
 
 class NRQueue : public LinkedQueue<Ticket*> {
 public:
     Ticket* findByID(int id) {
         Node<Ticket*>* curr = front;
         while (curr != nullptr) {
-            if (curr->data->getID() == id) {
+            if (curr->data->getRID() == id) {
                 return curr->data;
             }
             curr = curr->next;
@@ -20,7 +20,7 @@ public:
         Node<Ticket*>* curr = front;
 
         while (curr != nullptr) {
-            if (curr->data->getID() == id) {
+            if (curr->data->getRID() == id) {
                 Ticket* target = curr->data;
 
                 if (curr == front) {
