@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include "Ticket.h"
 using namespace std;
@@ -25,3 +26,7 @@ public:
     void assignTicket(Ticket* t);
     void releaseTicket();
 };
+
+// prints the TID
+ostream& operator<<(ostream& out, const Technician& t);
+ostream& operator<<(ostream& out, const Technician* t);   
